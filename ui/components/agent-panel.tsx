@@ -1,6 +1,6 @@
 "use client";
 
-import { Bot, Sparkles } from "lucide-react";
+import { Bot, Sparkles, Activity } from "lucide-react";
 import type { Agent, AgentEvent, GuardrailCheck } from "@/lib/types";
 import { AgentsList } from "./agents-list";
 import { Guardrails } from "./guardrails";
@@ -36,21 +36,23 @@ export function AgentPanel({
   const runnerEvents = events.filter((e) => e.type !== "message");
 
   return (
-    <div className="h-full flex flex-col glass-effect rounded-2xl shadow-xl border animate-scale-in">
-      <div className="gradient-bg text-white px-6 py-4 rounded-t-2xl">
-        <div className="flex items-center gap-3">
+    <div className="h-full flex flex-col glass-effect rounded-3xl shadow-2xl border animate-scale-in overflow-hidden">
+      <div className="gradient-bg text-white px-8 py-6 rounded-t-3xl">
+        <div className="flex items-center gap-4">
           <div className="relative">
-            <Bot className="h-6 w-6 animate-pulse" />
-            <Sparkles className="h-3 w-3 absolute -top-1 -right-1 animate-bounce" />
+            <div className="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center">
+              <Bot className="h-6 w-6 animate-pulse" />
+            </div>
+            <Sparkles className="h-4 w-4 absolute -top-1 -right-1 animate-bounce" />
           </div>
           <div>
-            <h1 className="font-bold text-lg">AI Wellness Panel</h1>
-            <p className="text-white/80 text-sm">Agent Orchestration Dashboard</p>
+            <h1 className="font-bold text-xl text-shadow">AI Wellness Panel</h1>
+            <p className="text-white/90 text-sm">Agent Orchestration Dashboard</p>
           </div>
         </div>
       </div>
 
-      <div className="flex-1 overflow-y-auto p-6 space-y-6 bg-background/50 dark:bg-background/30 rounded-b-2xl">
+      <div className="flex-1 overflow-y-auto p-8 space-y-8 bg-gradient-to-b from-background/50 to-background/30">
         <div className="animate-slide-up" style={{ animationDelay: "0.1s" }}>
           <AgentsList agents={agents} currentAgent={currentAgent} />
         </div>
